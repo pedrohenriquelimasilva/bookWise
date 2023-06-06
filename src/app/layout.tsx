@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import { Nunito_Sans as NunitoSans } from 'next/font/google'
 import { getCssText } from '../styles'
 import { stylesGlobalCss } from '@/styles/global'
+import { NextAuthProvider } from './providers'
 
 const nunitoSans = NunitoSans({
   subsets: ['latin'],
@@ -25,7 +26,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           dangerouslySetInnerHTML={{ __html: getCssText() }}
         />
       </head>
-      <body className={nunitoSans.variable}>{children}</body>
+      <body className={nunitoSans.className}>
+        <NextAuthProvider>{children}</NextAuthProvider>
+      </body>
     </html>
   )
 }

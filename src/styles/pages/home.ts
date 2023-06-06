@@ -8,7 +8,7 @@ export const Container = styled('main', {
 
 export const Schedule = styled('div', {
   display: 'flex',
-  alingnItems: 'center',
+  alignItems: 'center',
   justifyContent: 'center',
   maxWidth: 400,
   width: '100%',
@@ -43,21 +43,28 @@ export const Hero = styled('div', {
     top: '45%',
     left: '25%',
     display: 'flex',
-    alingnItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'center',
     gap: '$3',
-    color: '$gradient-horizontal',
+    backgroundImage: '$gradient-horizontal',
+    '-webkit-background-clip': 'text',
+    '-webkit-text-fill-color': 'transparent',
+    backgroundClip: 'text',
+    textFillColor: 'transparent',
+
     zIndex: '999',
   },
 
   div: {
-    maxWidth: 600,
+    maxWidth: 650,
     position: 'relative',
+    borderRadius: '$md',
 
     div: {
       position: 'absolute',
-      backgroundColor: '$gradient-horizontal',
-      opacity: 0.7,
+      background:
+        'linear-gradient(0deg, rgba(42, 40, 121, 0.6), rgba(42, 40, 121, 0.6)), rgba(0, 0, 0, 0.6)',
+      backdropFilter: 'blur(1px)',
+      opacity: 1,
       width: '100%',
       height: '100%',
       backgroundClip: 'contentBox',
@@ -65,8 +72,8 @@ export const Hero = styled('div', {
 
     img: {
       width: '100%',
+      objectFit: 'cover',
       borderRadius: '$md',
-      objectFit: 'contain',
       backgroundColor: '$gradient-horizontal',
     },
   },
@@ -83,13 +90,13 @@ export const ButtonConect = styled('button', {
   color: '$gray200',
   transition: 'background-color 0.2s',
   borderRadius: '$sm',
-  border: '1px solid $gray600',
+  border: '2px solid $gray600',
   cursor: 'pointer',
   fontSize: '$lg',
   fontWeight: '700',
 
   '&:not(:disabled):hover, &:not(:disabled):focus': {
     background: '$gray500',
-    border: '1px solid $purple200',
+    border: '2px solid $gray200',
   },
 })
