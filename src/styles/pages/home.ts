@@ -1,6 +1,6 @@
 import { styled } from '..'
 
-export const Container = styled('main', {
+export const Container = styled('div', {
   display: 'grid',
   gridTemplateColumns: 'repeat(2, 1fr)',
   minHeight: '100vh',
@@ -80,7 +80,7 @@ export const Hero = styled('div', {
 })
 
 export const ButtonConect = styled('button', {
-  all: 0,
+  all: 'none',
   display: 'flex',
   alingnItems: 'center',
   gap: '$5',
@@ -99,4 +99,9 @@ export const ButtonConect = styled('button', {
     background: '$gray500',
     border: '2px solid $gray200',
   },
+})
+
+export const TextError = styled('p', {
+  fontSize: '$sm',
+  color: '#f75a68',
 })

@@ -1,25 +1,39 @@
+'use client'
+
 import Image from 'next/image'
-import { z } from 'zod'
 import backgroundImageBookWise from '../assets/bookwise-background.png'
 import logoImage from '../assets/logo.svg'
 import google from '../assets/googleLogo.svg'
 import github from '../assets/logoGithub.svg'
 import rocketLaunch from '../assets/RocketLaunch.svg'
+import { useSearchParams, useRouter } from 'next/navigation'
 import {
   Container,
   Hero,
   ButtonConect,
   Schedule,
   Form,
+  TextError,
 } from '../styles/pages/home'
-
-const createUserSchedule = z.object({
-  name: z.string().min(3),
-})
-
-type UserProps = z.infer<typeof createUserSchedule>
+import { signIn, useSession } from 'next-auth/react'
 
 export default function Home() {
+  const urlQuery = useSearchParams()
+  const router = useRouter()
+  const session = useSession()
+
+  const isSignIn = session.status === 'authenticated'
+
+  const hasAuthError = urlQuery.has('error')
+
+  async function handleConnect() {
+    await signIn('google')
+  }
+
+  async function handleRedirectVisitante() {
+    await router.push('/home')
+  }
+
   return (
     <Container>
       <Hero>
@@ -36,25 +50,45 @@ export default function Home() {
 
       <Schedule>
         <Form>
-          <div>
-            <strong>Boas vindas!</strong>
-            <span>Faça seu login ou acesse como visitante</span>
-          </div>
+          {isSignIn ? (
+            <>
+              <div>
+                <strong>Você está conectado!</strong>
+                <span>Entrar na plataforma</span>
+              </div>
 
-          <ButtonConect>
-            <Image src={google} alt="Google logo" />
-            Entrar com Google
-          </ButtonConect>
+              <ButtonConect type="button" onClick={handleRedirectVisitante}>
+                <Image src={rocketLaunch} alt="RocketLaunch logo" />
+                Acessar Platafornma
+              </ButtonConect>
+            </>
+          ) : (
+            <>
+              <div>
+                <strong>Boas vindas!</strong>
+                <span>Faça seu login ou acesse como visitante</span>
+              </div>
 
-          <ButtonConect>
-            <Image src={github} alt="Github logo" />
-            Entrar com Github
-          </ButtonConect>
+              {hasAuthError && (
+                <TextError>Aceite as permissões para se autenticar!</TextError>
+              )}
 
-          <ButtonConect type="button">
-            <Image src={rocketLaunch} alt="RocketLaunch logo" />
-            Acessar como visitante
-          </ButtonConect>
+              <ButtonConect onClick={handleConnect}>
+                <Image src={google} alt="Google logo" />
+                Entrar com Google
+              </ButtonConect>
+
+              <ButtonConect onClick={handleConnect}>
+                <Image src={github} alt="Github logo" />
+                Entrar com Github
+              </ButtonConect>
+
+              <ButtonConect type="button" onClick={handleRedirectVisitante}>
+                <Image src={rocketLaunch} alt="RocketLaunch logo" />
+                Acessar como visitante
+              </ButtonConect>
+            </>
+          )}
         </Form>
       </Schedule>
     </Container>
