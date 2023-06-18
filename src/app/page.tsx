@@ -26,8 +26,8 @@ export default function Home() {
 
   const hasAuthError = urlQuery.has('error')
 
-  async function handleConnect() {
-    await signIn('google')
+  async function handleConnect(profile: 'google' | 'github') {
+    await signIn(profile)
   }
 
   async function handleRedirectVisitante() {
@@ -73,12 +73,12 @@ export default function Home() {
                 <TextError>Aceite as permissões para se autenticar!</TextError>
               )}
 
-              <ButtonConect onClick={handleConnect}>
+              <ButtonConect onClick={() => handleConnect('google')}>
                 <Image src={google} alt="Google logo" />
                 Entrar com Google
               </ButtonConect>
 
-              <ButtonConect onClick={handleConnect}>
+              <ButtonConect onClick={() => handleConnect('github')}>
                 <Image src={github} alt="Github logo" />
                 Entrar com Github
               </ButtonConect>

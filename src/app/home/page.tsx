@@ -3,7 +3,7 @@ import {
   Container,
   Hero,
   AvatarRoot,
-  AvatarImage,
+  // AvatarImage,
   AvatarFallback,
   MenuContent,
   Navegation,

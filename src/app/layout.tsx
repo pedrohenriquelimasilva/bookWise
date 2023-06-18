@@ -17,7 +17,13 @@ export const metadata = {
 
 stylesGlobalCss()
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+  session,
+}: {
+  children: ReactNode
+  session: any
+}) {
   return (
     <html lang="pt-br">
       <head>
@@ -27,7 +33,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
       </head>
       <body className={nunitoSans.className}>
-        <NextAuthProvider>
+        <NextAuthProvider session={session}>
           <main>{children}</main>
         </NextAuthProvider>
       </body>
