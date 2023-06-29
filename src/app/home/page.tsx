@@ -1,50 +1,37 @@
 'use client'
+import { Assessment } from '@/components/Assessment'
+import { BookRating } from '@/components/BookRating'
 import {
-  Container,
-  Hero,
-  AvatarRoot,
-  // AvatarImage,
-  AvatarFallback,
-  MenuContent,
-  Navegation,
+  MainContent,
+  RatingBook,
+  HeroRating,
+  BooksContainer,
 } from '@/styles/pages/init'
-import logoImage from '../../assets/logo.svg'
-import Image from 'next/image'
-import { ChartLineUp, User, Binoculars, SignOut } from '@phosphor-icons/react'
+import { ArrowRight, ChartLineUp } from '@phosphor-icons/react'
 import Link from 'next/link'
 
 export default function Home() {
   return (
-    <Container>
-      <MenuContent>
-        <span>
-          <Image src={logoImage} width={24} height={24} alt="BookWise logo" />
-          BookWise
-        </span>
-        <Navegation>
-          <Link href="/home" className="active">
-            <ChartLineUp size={24} weight="bold" />
-            Início
+    <>
+      <MainContent>
+        <h1>
+          <ChartLineUp size={32} weight="bold" />
+          Início
+        </h1>
+        <Assessment />
+      </MainContent>
+      <RatingBook>
+        <HeroRating>
+          Livros populares
+          <Link href="/home/explorer">
+            Ver todos <ArrowRight size={16} />{' '}
           </Link>
-          <Link href="/explorer">
-            <Binoculars size={24} weight="bold" />
-            Explorar
-          </Link>
-          <Link href="/profile">
-            <User size={24} weight="bold" />
-            Perfil
-          </Link>
-        </Navegation>
-        <Hero>
-          <AvatarRoot>
-            <AvatarFallback delayMs={600}>
-              <User />
-            </AvatarFallback>
-          </AvatarRoot>
-          <strong>Pedro</strong>
-          <SignOut size={28} />
-        </Hero>
-      </MenuContent>
-    </Container>
+        </HeroRating>
+        <BooksContainer>
+          <BookRating />
+          <BookRating />
+        </BooksContainer>
+      </RatingBook>
+    </>
   )
 }

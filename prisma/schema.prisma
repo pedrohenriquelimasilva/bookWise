@@ -43,13 +43,60 @@ model Session {
 model User {
   id         String  @id @default(cuid())
   name       String
-  email      String  @unique
   avatar_url String?
 
   created_at DateTime @default(now())
 
   accounts Account[]
   sessions Session[]
+  Rating   Rating[]
 
   @@map("users")
+}
+
+model Book {
+  id          String            @id @default(cuid())
+  name        String
+  author      String
+  total_pages Int
+  summary     String
+  cover_url   String
+  created_at  DateTime          @default(now())
+  categories  CategoryOnBooks[]
+  rating      Rating[]
+
+  @@map("books")
+}
+
+model Category {
+  id    String            @id @default(cuid())
+  name  String            @unique
+  books CategoryOnBooks[]
+
+  @@map("categories")
+}
+
+model CategoryOnBooks {
+  book_id     String
+  category_id String
+
+  book     Book     @relation(fields: [book_id], references: [id])
+  category Category @relation(fields: [category_id], references: [id])
+
+  @@id([book_id, category_id])
+}
+
+model Rating {
+  id          String   @id @default(cuid())
+  rate        Int
+  description String
+  created_at  DateTime @default(now())
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
+
+  book    Book   @relation(fields: [book_id], references: [id])
+  book_id String
+
+  @@map("ratings")
 }
