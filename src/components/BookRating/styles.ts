@@ -1,4 +1,5 @@
 import { styled } from '@/styles'
+import Image from 'next/image'
 
 export const Container = styled('section', {
   padding: '$4 $5',
@@ -29,4 +30,9 @@ export const Datails = styled('div', {
       display: 'block',
     },
   },
+})
+
+export const BookImage = styled(Image, {
+  borderRadius: 4,
+  objectFit: 'cover',
 })

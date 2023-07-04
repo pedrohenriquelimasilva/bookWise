@@ -1,16 +1,28 @@
-import Image from 'next/image'
-import { Container, Datails } from './styles'
+import { BookImage, Container, Datails } from './styles'
 import { Rating } from '../Rating'
 
-export function BookRating() {
+interface BookRatingProps {
+  book: {
+    id: string
+    name: string
+    author: string
+    total_pages: number
+    summary: string
+    cover_url: string
+    created_at: string
+    avgRating: number
+  }
+}
+
+export function BookRating({ book }: BookRatingProps) {
   return (
     <Container>
-      <Image alt="book" width={64} height={94} />
+      <BookImage src={book.cover_url} alt={book.name} width={64} height={94} />
 
       <Datails>
         <strong>
-          A revolução dos bichos
-          <span>George Orwell</span>
+          {book.name}
+          <span>{book.author}</span>
         </strong>
 
         <Rating />

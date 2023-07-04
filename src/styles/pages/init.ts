@@ -13,6 +13,12 @@ export const MainContent = styled('div', {
   marginTop: '4.5rem',
   minHeight: '100vh',
   overflow: 'scroll',
+
+  h1: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '$3',
+  },
 })
 
 export const RatingBook = styled('aside', {
@@ -34,6 +40,11 @@ export const HeroRating = styled('span', {
     gap: '$2',
     color: '$purple100',
     textDecoration: 'none',
+    transition: '0.2s',
+
+    '&:hover, &:focus': {
+      color: '$purple200',
+    },
   },
 })
 

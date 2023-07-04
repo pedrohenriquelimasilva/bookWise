@@ -43,10 +43,10 @@ export function PrismaAdapter(
         avatar_url: user.avatar_url!,
       }
     },
-    async getUserByEmail(email) {
+    async getUserByEmail(id) {
       const user = await prisma.user.findUnique({
         where: {
-          email,
+          id,
         },
       })
 

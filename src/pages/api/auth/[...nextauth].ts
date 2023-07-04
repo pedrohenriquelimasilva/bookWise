@@ -18,7 +18,6 @@ export function buildNextAuthOptions(
           return {
             id: profile.sub,
             name: profile.name,
-            email: profile.email,
             avatar_url: profile.picture,
           }
         },
@@ -30,7 +29,6 @@ export function buildNextAuthOptions(
           return {
             id: `${profile.id}`,
             name: profile.name!,
-            email: profile.email!,
             avatar_url: profile.avatar_url,
           }
         },
