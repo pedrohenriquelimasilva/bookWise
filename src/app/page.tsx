@@ -26,11 +26,13 @@ export default function Home() {
 
   const hasAuthError = urlQuery.has('error')
 
+  // sign in bookwise in google account or github account
   async function handleConnect(profile: 'google' | 'github') {
     await signIn(profile)
   }
 
-  async function handleRedirectVisitante() {
+  // redirect user visitor fom home page
+  async function handleRedirectVisitor() {
     await router.push('/home')
   }
 
@@ -57,7 +59,7 @@ export default function Home() {
                 <span>Entrar na plataforma</span>
               </div>
 
-              <ButtonConect type="button" onClick={handleRedirectVisitante}>
+              <ButtonConect type="button" onClick={handleRedirectVisitor}>
                 <Image src={rocketLaunch} alt="RocketLaunch logo" />
                 Acessar Platafornma
               </ButtonConect>
@@ -83,7 +85,7 @@ export default function Home() {
                 Entrar com Github
               </ButtonConect>
 
-              <ButtonConect type="button" onClick={handleRedirectVisitante}>
+              <ButtonConect type="button" onClick={handleRedirectVisitor}>
                 <Image src={rocketLaunch} alt="RocketLaunch logo" />
                 Acessar como visitante
               </ButtonConect>

@@ -57,22 +57,25 @@ model User {
 }
 
 model Book {
-  id          String            @id @default(cuid())
+  id          String @id @default(cuid())
   name        String
   author      String
   total_pages Int
   summary     String
   cover_url   String
-  created_at  DateTime          @default(now())
-  categories  CategoryOnBooks[]
-  rating      Rating[]
+
+  created_at DateTime @default(now())
+
+  categories CategoryOnBooks[]
+  rating     Rating[]
 
   @@map("books")
 }
 
 model Category {
-  id    String            @id @default(cuid())
-  name  String            @unique
+  id   String @id @default(cuid())
+  name String @unique
+
   books CategoryOnBooks[]
 
   @@map("categories")

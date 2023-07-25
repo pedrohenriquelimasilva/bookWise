@@ -8,6 +8,7 @@ export const Container = styled('section', {
   display: 'flex',
   alignItems: 'center',
   gap: '$5',
+  height: '100%',
   width: '100%',
   maxHeight: 130,
 })
@@ -16,11 +17,13 @@ export const Datails = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   height: '100%',
-  alignItems: 'flex-start',
   justifyContent: 'space-between',
+  width: '100%',
+  gap: 'inherit',
 
   strong: {
     lineHeight: '$short',
+    Maxheight: 200,
 
     span: {
       fontSize: '$sm',

@@ -25,7 +25,7 @@ export function BookRating({ book }: BookRatingProps) {
           <span>{book.author}</span>
         </strong>
 
-        <Rating />
+        <Rating rate={book.avgRating} />
       </Datails>
     </Container>
   )

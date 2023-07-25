@@ -2,17 +2,28 @@ import { styled } from '..'
 
 export const Container = styled('div', {
   display: 'grid',
-  gridTemplateColumns: '264px 1fr 420px',
+  gridTemplateColumns: '264px 1fr',
   gap: '4rem',
   position: 'relative',
   maxHeight: '100vh',
-  overflow: 'hidden',
+})
+
+export const HomeContainer = styled('div', {
+  marginTop: '4.5rem',
+  display: 'flex',
+  alignItems: 'flex-start',
+  justifyContent: 'center',
+  gap: '4rem',
+  paddingRight: '6rem',
 })
 
 export const MainContent = styled('div', {
-  marginTop: '4.5rem',
-  minHeight: '100vh',
+  maxHeight: '92vh',
   overflow: 'scroll',
+
+  '&::-webkit-scrollbar': {
+    width: 0,
+  },
 
   h1: {
     display: 'flex',
@@ -22,7 +33,10 @@ export const MainContent = styled('div', {
 })
 
 export const RatingBook = styled('aside', {
-  margin: '146px 6rem 0 0',
+  display: 'flex',
+  flexDirection: 'column',
+  paddingTop: '3.4rem',
+  gap: '$4',
 })
 
 export const HeroRating = styled('span', {
@@ -52,5 +66,24 @@ export const BooksContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: '$3',
-  marginTop: '$4',
+})
+
+export const AssessmentContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'flex-start',
+  gap: '$4',
+  marginTop: '$10',
+  maxHeight: '100%',
+
+  h2: {
+    fontSize: '$sm',
+  },
+})
+
+export const CardContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'flex-start',
+  gap: '$3',
 })

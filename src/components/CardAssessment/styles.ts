@@ -26,6 +26,7 @@ export const Hero = styled('div', {
   display: 'flex',
   gap: '$4',
   alignItems: 'flex-start',
+  width: '100%',
 
   span: {
     flex: 1,
@@ -46,5 +47,16 @@ export const ContentBook = styled('section', {
     fontSize: '$sm',
     color: '$gray300',
     marginTop: '$4',
+  },
+})
+
+export const ShowMore = styled('strong', {
+  fontSize: '$sm',
+  color: '$purple100',
+  transition: 'color 0.2s',
+
+  '&:hover': {
+    color: '$purple200',
+    cursor: 'pointer',
   },
 })

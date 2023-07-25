@@ -12,7 +12,7 @@ const navLinks = [
     icon: <ChartLineUp size={24} weight="bold" />,
   },
   {
-    href: '/explorer',
+    href: '/home/explorer',
     children: 'Explorar',
     icon: <Binoculars size={24} weight="bold" />,
   },
@@ -24,7 +24,7 @@ export function Navegation() {
   const authenticatedLinks = useMemo(() => {
     if (session.status === 'authenticated') {
       return navLinks.concat({
-        href: '/profile',
+        href: '/home/profile',
         children: 'Perfil',
         icon: <User size={24} weight="bold" />,
       })
